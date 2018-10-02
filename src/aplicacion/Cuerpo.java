@@ -10,21 +10,22 @@ package aplicacion;
  * @author Eduardo Arias
  */
 public abstract class Cuerpo {
-    int[] pos;
-    public Cuerpo(int x,int y){
-        pos=new int[]{x,y};       
+    int x,y;
+    public Cuerpo(){
     }
     
+    public void setPos(int x,int y){
+        this.x=x;
+        this.y=y;
+    }
     
-    /**
-     * Retorna un valor negativo (como puntos de vida) si le afecta moverse
-     * hacia ese lugar, positivo si genera daño al oponente y 0 si no posible 
-     * (neutral) una interaccion con este
-     * @param otro Cuerpo
-     * @return 
-     */
-    public abstract int reaccion(Cuerpo otro);
+    public int[] getPos(){
+        return new int[]{x,y};
+    }
+      
+    public abstract int[] posicionOptimaInicial();
     
+    public abstract String demeIdentificador();
     
     
 }

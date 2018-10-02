@@ -9,14 +9,19 @@ package aplicacion;
  *
  * @author Eduardo Arias
  */
-public class Mina extends Cuerpo{
+public class MegaBall extends Personaje {
     int id;
-    public Mina(int id) {
+
+    public MegaBall(int id) {
         super();
         this.id=id;
-    }      
+    }
 
-  
+    @Override
+    public int reaccion(Cuerpo otro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public int[] posicionOptimaInicial() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,8 +29,7 @@ public class Mina extends Cuerpo{
 
     @Override
     public String demeIdentificador() {
-          return "Mina#"+id;
+        return "Megaball#"+id;
     }
-
-  
+    
 }

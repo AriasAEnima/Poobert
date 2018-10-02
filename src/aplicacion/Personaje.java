@@ -10,14 +10,18 @@ package aplicacion;
  * @author Eduardo Arias
  */
 public abstract class Personaje extends Cuerpo{
-    public Personaje(int x, int y){
-       super(x,y);
+    public Personaje(){
+       super();
     }
 
-    @Override
-    public int reaccion(Cuerpo otro) {
-        return (otro instanceof Mina)? -100:0;      
-    }
-    
-    public abstract void cambiarPos(int x,int y);
+     /**
+     * Retorna un valor negativo (como puntos de vida) si le afecta moverse
+     * hacia ese lugar, positivo si genera daño al oponente y 0 si no posible 
+     * (neutral) una interaccion con este
+     * @param otro Cuerpo
+     * @return 
+     */
+    public abstract int reaccion(Cuerpo otro);   
+          
+   
 }
