@@ -5,6 +5,8 @@
  */
 package aplicacion;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Eduardo Arias
@@ -21,7 +23,9 @@ public abstract class Personaje extends Cuerpo{
      * @param otro Cuerpo
      * @return 
      */
-    public abstract int reaccion(Cuerpo otro);   
+    public abstract int reaccion(Cuerpo otro); 
+    
+    public abstract int[] nuevoMovimiento(ArrayList<Cuerpo> fichas,int[][] campo);
           
    
 }

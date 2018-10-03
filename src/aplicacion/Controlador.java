@@ -25,12 +25,15 @@ public class Controlador {
     public Controlador(int cubos,int pjs) {
         tab=new Tablero(cubos);
         fichas=Collections.synchronizedList(new ArrayList<>());
-        prepareCuerpos(pjs,1,1,1);
-        printCuerpos();
+        prepareCuerpos(pjs,2,3,4);
+       
+        System.out.println("------------------------");
+        Printer.printTablero(tab.getCampo());
+        Printer.printCuerpos(fichas);
     }    
     
     public Controlador(){
-        this(20,1);
+        this(10,1);
     }
     public static void main(String[] args) {
        Controlador con=new Controlador();
@@ -69,22 +72,51 @@ public class Controlador {
         }        
     }
     
+         
     
-    public static int[] posicionArriba(){
-        return new int[]{0,0};
-    }
     
-    public static int[] posicionAbajo(){
-        return new int[]{0,0};
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    static class Printer{
+        static void printCuerpos(List<Cuerpo> fichas) {
+            synchronized (fichas) {  
+                Iterator<Cuerpo> itr = fichas.iterator();  
+                while (itr.hasNext()) {  
+                    System.out.println(itr.next().demeIdentificador());  
+                }  
+            }  
+        }       
+        static void printTablero(int[][] campoJuego){
+            int n=campoJuego[campoJuego.length-1].length;
+            String line="";
+            for (int k=1; k<=n; k++){              
+                line+=rept(n/2 - (k+1)/2,'H')+rept(k%2,'.');
+                for (int j=0; j<campoJuego[k-1].length;j++){
+                    line+=campoJuego[k-1][j];
+                }
+                System.out.println(line);
+                line="";
+            }
+        }
+        
+        static String rept(int cantidad,char sb){
+            String ans="";
+            for (int i=1; i<=cantidad; i++){
+                ans+=sb;
+            }
+            return ans;
+        }
+   
     }
 
-    private void printCuerpos() {
-        synchronized (fichas) {  
-            Iterator<Cuerpo> itr = fichas.iterator();  
-            while (itr.hasNext()) {  
-                System.out.println(itr.next().demeIdentificador());  
-            }  
-        }  
-    }    
-  
-}
+
+
+}     
+
