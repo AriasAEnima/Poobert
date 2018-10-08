@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Eduardo Arias
  */
-public class Snake extends Personaje {
+public class Snake extends Enemigo {
     int id;
 
     public Snake(int id) {
@@ -19,10 +19,7 @@ public class Snake extends Personaje {
         this.id=id;
     }
 
-    @Override
-    public int reaccion(Cuerpo otro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public int[] posicionOptimaInicial() {
@@ -37,6 +34,8 @@ public class Snake extends Personaje {
     @Override
     public int[] nuevoMovimiento(ArrayList<Cuerpo> fichas, int[][] campo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }   
+
+    
     
 }

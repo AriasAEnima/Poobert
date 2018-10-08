@@ -10,9 +10,12 @@ package aplicacion;
  * @author Eduardo Arias
  */
 public abstract class Cuerpo {
-    int x,y;
+    private int x,y;
+    private boolean ingame;
     public Cuerpo(){
+        ingame=true;
     }
+       
     
     public void setPos(int x,int y){
         this.x=x;
@@ -22,10 +25,25 @@ public abstract class Cuerpo {
     public int[] getPos(){
         return new int[]{x,y};
     }
+    
+    public boolean getInGame(){
+        return ingame;
+    }
+    
+    public void outGame(){
+        ingame=false;
+    }
+    
+     public void inGame(){
+        ingame=true;
+    }
+    
       
     public abstract int[] posicionOptimaInicial();
     
     public abstract String demeIdentificador();
+    
+    public abstract boolean reaccion(Cuerpo otro);  
     
     
 }

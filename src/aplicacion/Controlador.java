@@ -19,21 +19,26 @@ import java.util.logging.Logger;
  * @author Eduardo Arias
  */
 public class Controlador {
-    List<Cuerpo> fichas ;  
+    List<Jugador> jugadores ;
+    List<Objeto> objetos;
+    List<Enemigo> enemigos;
     Tablero tab;
 
     public Controlador(int cubos,int pjs) {
         tab=new Tablero(cubos);
-        fichas=Collections.synchronizedList(new ArrayList<>());
+        jugadores=Collections.synchronizedList(new ArrayList<>());
+        objetos=Collections.synchronizedList(new ArrayList<>());
+        enemigos=Collections.synchronizedList(new ArrayList<>());
         prepareCuerpos(pjs,2,3,4);
        
         System.out.println("------------------------");
         Printer.printTablero(tab.getCampo());
-        Printer.printCuerpos(fichas);
+        List<Cuerpo> cuerpos=mixedCuerpos();       
+        Printer.printCuerpos( cuerpos);
     }    
     
     public Controlador(){
-        this(10,1);
+        this(20,1);
     }
     public static void main(String[] args) {
        Controlador con=new Controlador();
@@ -53,7 +58,13 @@ public class Controlador {
            Constructor<?> cons = cl.getConstructor(int.class);
            for (int i=1; i<=cantidad ;i++){
                Object o = cons.newInstance(i);
-               fichas.add((Cuerpo) o);
+               if (o instanceof Enemigo){
+                   enemigos.add((Enemigo) o);
+               }else if(o instanceof Jugador){
+                   jugadores.add((Jugador) o);
+               }else if(o instanceof Objeto){
+                   objetos.add((Objeto) o);
+               }
            }           
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,14 +82,22 @@ public class Controlador {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }
+
+    private List<Cuerpo> mixedCuerpos() {
+        List<Cuerpo> ans=new ArrayList<>();
+        for(Jugador jg:jugadores){
+            ans.add((Cuerpo) jg);
+        }
+        for(Enemigo en:enemigos){
+            ans.add((Cuerpo) en);
+        }
+        for(Objeto ob:objetos){
+            ans.add((Cuerpo) ob);
+        }
+        return ans;
+    }
     
-         
-    
-    
-    
-    
-    
-    
+       
     
     
     

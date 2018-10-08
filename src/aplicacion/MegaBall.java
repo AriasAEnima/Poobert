@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Eduardo Arias
  */
-public class MegaBall extends Personaje {
+public class MegaBall extends Enemigo{
     int id;
 
     public MegaBall(int id) {
@@ -19,24 +19,22 @@ public class MegaBall extends Personaje {
         this.id=id;
     }
 
-    @Override
-    public int reaccion(Cuerpo otro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int[] posicionOptimaInicial() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @Override
     public String demeIdentificador() {
         return "Megaball#"+id;
     }
+   
 
     @Override
     public int[] nuevoMovimiento(ArrayList<Cuerpo> fichas, int[][] campo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+     @Override
+    public int[] posicionOptimaInicial() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
     
 }

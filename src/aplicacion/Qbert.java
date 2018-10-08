@@ -5,13 +5,11 @@
  */
 package aplicacion;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Eduardo Arias
  */
-public class Qbert extends Personaje {
+public class Qbert extends Jugador{
     int id;
 
     public Qbert(int id) {
@@ -27,19 +25,17 @@ public class Qbert extends Personaje {
     public String demeIdentificador() {
           return "Qbert#"+id;
     }
-
-    @Override
-    public int reaccion(Cuerpo otro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
+    
+   
     @Override
     public int[] posicionOptimaInicial() {
        return new int[]{0,0};
     }    
 
     @Override
-    public int[] nuevoMovimiento(ArrayList<Cuerpo> fichas, int[][] campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void move(int x, int y) {
+        setPos(x,y);
     }
+        
 }
